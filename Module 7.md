@@ -136,34 +136,29 @@ Use scanf to input the file name into the name array.
 
 ```
 #include <stdio.h>
-
-int main() {
-    char filename[100];
+int main()
+{
+    char file[100];
+    scanf("%s",file);
     FILE *fp;
-    char content[1000];
-
-    printf("Enter the file name: ");
-    scanf("%s", filename);
-
-    fp = fopen(filename, "w");
-    if (fp == NULL) {
-        return 1;
+    fp=fopen("file","w");
+    if(fp==NULL)
+    {
+        printf("Error");
     }
-    
+    else
+    {
+        printf("%s File Created Successfully\n%s File Opened\n",file,file);
 
-    getchar();
-    fgets(content, sizeof(content), stdin);
-
-    fputs(content, fp);
+    }
     fclose(fp);
-
-    return 0;
+    printf("%s File Closed",file);
+    
 }
-
 ```
 
 # Output:
-![alt text](EX-7_03.png)
+![alt text](EX-7_03.jpg)
 
 # Result:
 Thus, the program is verified successfully
@@ -194,34 +189,34 @@ Use scanf to input the file name into the name array and the number of strings i
  
 # Program:
 ```
- #include <stdio.h>
-
-int main() {
-    char filename[100]; 
+#include<stdio.h>
+int main()
+{
+    char file[100];
+    int n,roll;
+    scanf("%s%d",file,&n);
+    char name[100],city[100];
     FILE *fp;
-    char content[1000];
-
-printf("Enter the file name: ");
-scanf("%s", filename);
-
-fp = fopen(filename, "w");
-if (fp == NULL) {
-    return 1;
-}
-
-getchar();
-printf("Enter text to insert into the file:\n");
-fgets(content, sizeof(content), stdin);
-
-fputs(content, fp);
-fclose(fp);
-
-return 0;
+    fp=fopen("file","w");
+    printf("%s Opened\n",file);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d%s%s",&roll,name,city);
+        fprintf(fp,"%d%s%s",roll,name,city);
+    }
+    if (fp==NULL)
+    {
+        printf("Error");
+    }
+    else
+    {
+        printf("Data added Successfully\n");
+    }
 }
 ```
 
 # Output:
-![alt text](EX-7_04.png)
+![alt text](EX-7_04.jpg)
 
 # Result:
 Thus, the program is verified successfully
